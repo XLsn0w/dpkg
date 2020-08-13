@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Filter</key>
+	<dict>
+		<key>Mode</key>
+		<string>Any</string>
+		<key>Executables</key>
+		<array>
+			<string>clearmaster</string>
+			<string>securityd</string>
+			<string>devicecheckd</string>
+		</array>
+		<key>Bundles</key>
+		<array>
+			<string>com.apple.WebKit.WebContent</string>
+			<string>com.apple.WebKit.Networking</string>
+			<string>com.apple.springboard</string>
+			<string>com.apple.UIKit</string>
+			<string>com.apple.CoreFoundation</string>
+			<string>you.too.clear</string>
+			<string>com.apple.securityd</string>
+			<string>com.apple.devicecheckd</string>
+			<string>com.apple.Security</string>
+		</array>
+	</dict>
+</dict>
+</plist>

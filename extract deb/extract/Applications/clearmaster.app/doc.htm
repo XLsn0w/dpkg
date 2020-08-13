@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Http脚本指南</title>
+        <link href="${BASE_URL}/doc/prettify-cmd.css" id="prettify-style"  type="text/css" rel="stylesheet">
+        <link href="${BASE_URL}/doc/45c7d56d.layout.min.css" rel="stylesheet" media="screen">
+
+    </head>
+
+<body >
+
+
+<div id="editor-reader-full" class="editor-reader-full-shown" style="position: static; ">
+    <div id="wmd-preview" class="wmd-preview wmd-preview-full-reader" data-medium-element="true" style="left: 0px;">
+        
+        <h1 data-anchor-id="qk9u" id="http脚本指南">Http脚本指南</h1>
+        <p data-anchor-id="77pr"></p>
+        <hr>
+        
+
+        <h1 data-anchor-id="9ygz" id="目录">目录</h1><p data-anchor-id="ao7u"></p>
+        <div class="toc">
+            <div class="toc">
+                <ul>
+                    <li><a href="#http%E8%84%9A%E6%9C%AC%E6%8C%87%E5%8D%97">Http脚本指南</a></li>
+                    <li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+                    <li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+                    <li><a href="#http%E6%8C%87%E4%BB%A4%E8%AF%B4%E6%98%8E">HTTP指令说明</a></li>
+                    <li><a href="#%E6%8C%87%E4%BB%A4%E8%BF%94%E5%9B%9E%E5%80%BC%E8%AF%B4%E6%98%8E">指令返回值说明</a></li>
+                    <li><a href="#iggparamstxt%E5%8F%82%E6%95%B0%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E">iggparams.txt参数文件说明</a></li>
+                    <li><a href="#%E8%A7%A6%E5%8A%A8%E8%84%9A%E6%9C%AC%E7%A4%BA%E4%BE%8B">触动脚本示例</a>
+                        <ul>
+                        <li><a href="#1%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8">1、启动应用</a></li>
+                        <li><a href="#2%E7%94%9F%E6%95%88%E6%8C%87%E5%AE%9A%E8%AE%B0%E5%BD%95">2、生效指定记录</a></li>
+                        <li><a href="#3%E4%B8%80%E9%94%AE%E6%96%B0%E6%9C%BA">3、一键新机</a></li>
+                        <li><a href="#5%E8%AE%BE%E7%BD%AE%E5%BD%93%E5%89%8D%E8%AE%B0%E5%BD%95%E5%9D%90%E6%A0%87">4、设置当前记录坐标</a></li>
+                        <!--  <li><a href="#4%E9%87%8D%E5%91%BD%E5%90%8D%E5%BD%93%E5%89%8D%E8%AE%B0%E5%BD%95">5、重命名当前记录</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+<p></p>
+
+
+<h1 data-anchor-id="tiig" id="前言">前言</h1>
+
+<p data-anchor-id="vlbo">要使用HTTP脚本，需要应用的设置中，将脚本选项下的<strong>“启用HTTP脚本指令”</strong>开关打开。 <br>
+手机脚本调用：可直接调用<code>http://127.0.0.1:1688/cmd?</code> <br>
+PC调用：可直接调用<code>http://局域网IP:1688/cmd?</code></p>
+
+
+<h1 data-anchor-id="gwoi" id="http指令说明">HTTP指令说明</h1>
+
+<table data-anchor-id="5ff1" class="table">
+<tbody><tr><th width="120px">功能</th><th>代码</th></tr>
+<tr><td>启动应用</td><td><font color="red">runApp("you.too.clear");</font><br>注意：以下所有指令调用前，必须先调用该指令，将应用启动到最前端。</td></tr>
+<tr><td>一键新机</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">newrecord</font></td></tr> 
+<tr><td>下一条记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">nextrecord</font></td></tr>   
+<tr><td>清除所有记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">deleteallrecords</font></td></tr>    
+<tr><td>生效指定记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">activerecord</font>&amp;record=记录ID</td></tr>    
+<tr><td>生效第一条</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">activefirstrecord</font></td></tr>    
+<tr><td>生效最后一条</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">activelastrecord</font></td></tr>    
+<tr><td>禁用指定记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">disablerecord</font>&amp;record=记录ID</td></tr>   
+<tr><td>取消禁用记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">enablerecord</font>&amp;record=记录ID</td></tr>    
+<tr><td>删除指定记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">deleterecord</font>&amp;record=记录ID</td></tr>    
+<tr><td>瘦身指定记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">thinrecord</font>&amp;record=记录ID</td></tr>  
+<tr><td>导出指定记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">exportrecord</font>&amp;record=记录ID&gt;<br>导出记录在/var/mobile/Media/clearmaster/exportdata/下</td></tr> 
+<tr><td>导出所有记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">exportallrecords</font>&amp;zip=文件名<br>导出记录在/var/mobile/Media/clearmaster/exportdata/下</td></tr>  
+<tr><td>直接导入记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">importdirect</font><br>导入记录放在/var/mobile/Media/clearmaster/importdata/下<br>注：必须是导出的zip包</td></tr>  
+<tr><td>兼容性导入记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">importcompatible</font><br>导入记录放在/var/mobile/Media/clearmaster/importdata/下<br>注：必须是导出的zip包</td></tr> 
+<!-- <tr><td>导入NZT记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">importnzt</font><br>NZT记录放在/var/mobile/Media/clearmaster/nztdata/下<br>注：NZT记录需是解开的目录，或不加密的zip包</td></tr>  
+ --><!-- <tr><td>重命名当前记录</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">renamecurrentrecord</font>&amp;name=新名称<br>重命名后，新的名称将成为ID</td></tr> -->
+
+<tr><td>设置指定记录备注名称</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">setremarks</font>&amp;record=记录ID&gt;&amp;remarks=备注<br>备注长度20个字符</td></tr>
+<tr><td>获取指定记录备注名称</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">getremarks&amp;record=记录ID&gt;</font><br></td></tr>
+<tr><td>设置当前记录坐标</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">setcurrentrecordlocation</font>&amp;location=坐标<br>坐标格式为：纬度_经度_地名地名可选</td></tr>
+<tr><td>清除当前记录坐标</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">clearcurrentrecordlocation</font></td></tr>
+<tr><td>获取当前记录参数</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">getcurrentrecordparam</font><br>获取的参数在/var/mobile/Media/clearmaster/tmp/iggparams.txt文件中</td></tr>
+<tr><td>设置当前记录参数</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">setcurrentrecordparam</font><br>要设置的参数在/var/mobile/Media/clearmaster/tmp/iggparams.txt文件中,建议不要修改IDFA</td></tr> 
+<tr><td>获取所有记录名列表</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">getallrecordnames</font><br>获取的记录名列表在/var/mobile/Media/clearmaster/tmp/iggrecords.txt文件中</td></tr> <tr><td>清理AppStore</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">cleanappstore</font><br>注：如果已打开"清理AppStore"选项，一键新机之后，不再需要调用该指令</td></tr>    
+<tr><td>卸载选中的应用</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">uninstallselectedapp</font><br>注：如果已打开"卸载应用"选项，一键新机之后，不再需要调用该指令</td></tr>  
+<tr><td>时间正序排序</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">orderbytime</font></td></tr>  
+<tr><td>时间倒序排序</td><td>http://127.0.0.1:1688/cmd?fun=<font color="red">orderbytimedesc</font></td></tr>  
+</tbody></table>
+
+
+
+
+<h1 data-anchor-id="5y4j" id="指令返回值说明">指令返回值说明</h1><p data-anchor-id="ey1j">指令调用后，直接返回json串，格式:<code>{"result":返回值}</code> <br>
+另提供文件返回值，在：<code>/var/mobile/iggresult.txt</code>文件中   </p>
+    <table data-anchor-id="5ff1" class="table">
+        <tbody><tr><th width="120px">返回值</th><th>说明</th></tr>
+        <tr><td><font color="red">2</font></td><td>指令正在执行过程中，还未完成。</td></tr>    
+        <tr><td><font color="red">1</font></td><td>指令执行正常完成。</td></tr>  
+        <tr><td><font color="red">3</font></td><td>一键新机成功，但IP地址重复(仅针对<font color="red">newrecord</font>指令)。</td></tr>   
+        <tr><td><font color="red">4</font></td><td>下一条记录已到最后一条(仅针对<font color="red">nextrecord</font>指令)。</td></tr> 
+        <tr><td><font color="red">0</font></td><td>指令执行出错。</td></tr>    
+        <tr><td><font color="red">100</font></td><td>产品未激活，或已过期。</td></tr>  
+        <tr><td><font color="red">10</font></td><td>运行环境异常。</td></tr>   
+    </tbody></table>
+    <h1 data-anchor-id="cpad" id="iggparamstxt参数文件说明">iggparams.txt参数文件说明</h1><p data-anchor-id="ia59">获取或设置当前记录参数在：<code>/var/mobile/Media/clearmaster/tmp/iggparams.txt</code>文件中； <br>
+每一行一个参数，换行符为: <code>chr(10)</code>； <br>
+参数名与参数值之间，使用冒号(<code>:</code>)隔开； <br>
+可通过调用指令<font color="red">getcurrentrecordparam</font>后，打开该文件查看格式。</p>
+    <table data-anchor-id="p28u" class="table">
+        <tbody><tr><th width="120px">参数名称</th><th>说明</th></tr>
+        <!-- <tr><td><font color="red">RecordID</font></td><td>记录ID，如："APP001"。</td></tr>     -->
+        <tr><td><font color="red">DeviceName</font></td><td>设备名称，如："xxxx iPhone"。</td></tr> 
+        <tr><td><font color="red">SystemVersion</font></td><td>系统版本号，如："10.3.1"。</td></tr>  
+        <tr><td><font color="red">IDFA</font></td><td>IDFA值。</td></tr>  
+        <tr><td><font color="red">IDFV</font></td><td>IDFV值。</td></tr>  
+        <tr><td><font color="red">UDID</font></td><td>设备UDID值。</td></tr>    
+        <tr><td><font color="red">IMEI</font></td><td>设备IMEI值。</td></tr>    
+        <tr><td><font color="red">SerialNum</font></td><td>设备序列号。</td></tr> 
+        <tr><td><font color="red">MAC</font></td><td>MAC地址。</td></tr>   
+        <tr><td><font color="red">SSID</font></td><td>SSID值。</td></tr>  
+        <tr><td><font color="red">BSSID</font></td><td>BSSID值。</td></tr>    
+        <tr><td><font color="red">OpenUDID</font></td><td>OpenUDID值。</td></tr>  
+    </tbody>
+</table>
+
+
+
+
+
+<h1 data-anchor-id="tt5s" id="触动脚本示例">触动脚本示例</h1>
+
+
+<h3 data-anchor-id="vvrk" id="1启动应用">1、启动应用</h3>
+
+
+<pre class="prettyprint linenums prettyprinted" data-anchor-id="xqlg" style=""><ol class="linenums"><li class="L0"><code class="language-lua"><span class="pln">runApp</span><span class="pun">(</span><span class="str">"app"</span><span class="pun">);</span></code></li><li class="L1"><code class="language-lua"><span class="pun">--</span><span class="pln"> </span><span class="pun">第一次启动，建议延迟等待</span><span class="lit">3</span><span class="pun">秒，需要联网验证，如：</span></code></li><li class="L2"><code class="language-lua"><span class="pln">mSleep</span><span class="pun">(</span><span class="lit">3</span><span class="pln"> </span><span class="pun">*</span><span class="lit">1000</span><span class="pun">);</span></code></li></ol></pre>
+
+
+<h3 data-anchor-id="o0jj" id="2生效指定记录">2、生效指定记录</h3>
+
+
+<pre class="prettyprint linenums prettyprinted" data-anchor-id="x262" style=""><ol class="linenums"><li class="L0"><code class="language-lua"><span class="kwd">function</span><span class="pln"> activeRecord</span><span class="pun">(</span><span class="pln">name</span><span class="pun">)</span></code></li><li class="L1"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> sz </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"sz"</span><span class="pun">);</span></code></li><li class="L2"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> http </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"szocket.http"</span><span class="pun">);</span></code></li><li class="L3"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> res</span><span class="pun">,</span><span class="pln"> code </span><span class="pun">=</span><span class="pln"> http</span><span class="pun">.</span><span class="pln">request</span><span class="pun">(</span><span class="str">"http://127.0.0.1:1688/cmd?fun=activerecord&amp;record="</span><span class="pun">..</span><span class="pln">name</span><span class="pun">);</span></code></li><li class="L4"><code class="language-lua"><span class="pln">    </span><span class="kwd">if</span><span class="pln"> code </span><span class="pun">==</span><span class="pln"> </span><span class="lit">200</span><span class="pln"> </span><span class="kwd">then</span></code></li><li class="L5"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> resJson </span><span class="pun">=</span><span class="pln"> sz</span><span class="pun">.</span><span class="pln">json</span><span class="pun">.</span><span class="pln">decode</span><span class="pun">(</span><span class="pln">res</span><span class="pun">);</span></code></li><li class="L6"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> resJson</span><span class="pun">.</span><span class="pln">result</span><span class="pun">;</span></code></li><li class="L7"><code class="language-lua"><span class="pln">        dialog</span><span class="pun">(</span><span class="str">"the result is: "</span><span class="pln"> </span><span class="pun">..</span><span class="pln"> result</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">);</span></code></li><li class="L8"><code class="language-lua"><span class="pln">    </span><span class="kwd">end</span><span class="pln"> </span></code></li><li class="L9"><code class="language-lua"><span class="kwd">end</span><span class="pun">;</span></code></li><li class="L0"><code class="language-lua"><span class="pln">runApp</span><span class="pun">(</span><span class="str">"app"</span><span class="pun">);</span></code></li><li class="L1"><code class="language-lua"><span class="pln">mSleep</span><span class="pun">(</span><span class="lit">1</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">);</span></code></li><li class="L2"><code class="language-lua"><span class="pln">activeRecord</span><span class="pun">(</span><span class="str">"APP001"</span><span class="pun">);</span></code></li></ol></pre>
+
+
+<h3 data-anchor-id="q13m" id="3一键新机">3、一键新机</h3>
+
+
+<pre class="prettyprint linenums prettyprinted" data-anchor-id="8pad" style=""><ol class="linenums"><li class="L0"><code class="language-lua"><span class="kwd">function</span><span class="pln"> newRecord</span><span class="pun">()</span></code></li><li class="L1"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> sz </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"sz"</span><span class="pun">);</span></code></li><li class="L2"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> http </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"szocket.http"</span><span class="pun">);</span></code></li><li class="L3"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> res</span><span class="pun">,</span><span class="pln"> code </span><span class="pun">=</span><span class="pln"> http</span><span class="pun">.</span><span class="pln">request</span><span class="pun">(</span><span class="str">"http://127.0.0.1:1688/cmd?fun=newrecord"</span><span class="pun">);</span></code></li><li class="L4"><code class="language-lua"><span class="pln">    </span><span class="kwd">if</span><span class="pln"> code </span><span class="pun">==</span><span class="pln"> </span><span class="lit">200</span><span class="pln"> </span><span class="kwd">then</span></code></li><li class="L5"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> resJson </span><span class="pun">=</span><span class="pln"> sz</span><span class="pun">.</span><span class="pln">json</span><span class="pun">.</span><span class="pln">decode</span><span class="pun">(</span><span class="pln">res</span><span class="pun">);</span></code></li><li class="L6"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> resJson</span><span class="pun">.</span><span class="pln">result</span><span class="pun">;</span></code></li><li class="L7"><code class="language-lua"><span class="pln">        dialog</span><span class="pun">(</span><span class="str">"the result is: "</span><span class="pln"> </span><span class="pun">..</span><span class="pln"> result</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">);</span></code></li><li class="L8"><code class="language-lua"><span class="pln">        </span><span class="kwd">if</span><span class="pln"> result </span><span class="pun">==</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="kwd">then</span></code></li><li class="L9"><code class="language-lua"><span class="pln">            </span><span class="pun">--</span><span class="pln"> IP</span><span class="pun">地址重复</span></code></li><li class="L0"><code class="language-lua"><span class="pln">        </span><span class="kwd">end</span></code></li><li class="L1"><code class="language-lua"><span class="pln">        </span><span class="pun">--</span><span class="pln"> </span><span class="pun">....其他代码</span></code></li><li class="L2"><code class="language-lua"><span class="pln">    </span><span class="kwd">end</span><span class="pln"> </span></code></li><li class="L3"><code class="language-lua"><span class="kwd">end</span><span class="pun">;</span></code></li><li class="L4"><code class="language-lua"><span class="pln">runApp</span><span class="pun">(</span><span class="str">"app"</span><span class="pun">);</span></code></li><li class="L5"><code class="language-lua"><span class="pln">mSleep</span><span class="pun">(</span><span class="lit">1</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">);</span></code></li><li class="L6"><code class="language-lua"><span class="pln">newRecord</span><span class="pun">();</span></code></li></ol></pre>
+
+
+<h3 data-anchor-id="3ayy" id="4设置当前记录坐标">4、设置当前记录坐标</h3>
+
+
+<pre class="prettyprint linenums prettyprinted" data-anchor-id="k6b1" style=""><ol class="linenums"><li class="L0"><code class="language-lua"><span class="kwd">function</span><span class="pln"> setCurrentRecordLocation</span><span class="pun">(</span><span class="pln">location</span><span class="pun">)</span></code></li><li class="L1"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> sz </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"sz"</span><span class="pun">);</span></code></li><li class="L2"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> http </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"szocket.http"</span><span class="pun">);</span></code></li><li class="L3"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> res</span><span class="pun">,</span><span class="pln"> code </span><span class="pun">=</span><span class="pln"> http</span><span class="pun">.</span><span class="pln">request</span><span class="pun">(</span><span class="str">"http://127.0.0.1:1688/cmd?fun=setcurrentrecordlocation&amp;location="</span><span class="pun">..</span><span class="pln">location</span><span class="pun">);</span></code></li><li class="L4"><code class="language-lua"><span class="pln">    </span><span class="kwd">if</span><span class="pln"> code </span><span class="pun">==</span><span class="pln"> </span><span class="lit">200</span><span class="pln"> </span><span class="kwd">then</span></code></li><li class="L5"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> resJson </span><span class="pun">=</span><span class="pln"> sz</span><span class="pun">.</span><span class="pln">json</span><span class="pun">.</span><span class="pln">decode</span><span class="pun">(</span><span class="pln">res</span><span class="pun">);</span></code></li><li class="L6"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> resJson</span><span class="pun">.</span><span class="pln">result</span><span class="pun">;</span></code></li><li class="L7"><code class="language-lua"><span class="pln">        dialog</span><span class="pun">(</span><span class="str">"the result is: "</span><span class="pln"> </span><span class="pun">..</span><span class="pln"> result</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">);</span></code></li><li class="L8"><code class="language-lua"><span class="pln">    </span><span class="kwd">end</span><span class="pln"> </span></code></li><li class="L9"><code class="language-lua"><span class="kwd">end</span><span class="pun">;</span></code></li><li class="L0"><code class="language-lua"><span class="pln">runApp</span><span class="pun">(</span><span class="str">"app"</span><span class="pun">);</span></code></li><li class="L1"><code class="language-lua"><span class="pln">mSleep</span><span class="pun">(</span><span class="lit">1</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">);</span></code></li><li class="L2"><code class="language-lua"><span class="pln">setCurrentRecordLocation</span><span class="pun">(</span><span class="str">"116.7361382365_39.8887921413_北京老胡同"</span><span class="pun">);</span></code></li></ol></pre></div>
+</div>
+
+<!-- 
+<h3 data-anchor-id="00o4" id="5重命名当前记录">5、重命名当前记录</h3>
+
+
+<pre class="prettyprint linenums prettyprinted" data-anchor-id="r4aq" style=""><ol class="linenums"><li class="L0"><code class="language-lua"><span class="kwd">function</span><span class="pln"> renameCurrentRecord</span><span class="pun">(</span><span class="pln">name</span><span class="pun">)</span></code></li><li class="L1"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> sz </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"sz"</span><span class="pun">);</span></code></li><li class="L2"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> http </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"szocket.http"</span><span class="pun">);</span></code></li><li class="L3"><code class="language-lua"><span class="pln">    </span><span class="kwd">local</span><span class="pln"> res</span><span class="pun">,</span><span class="pln"> code </span><span class="pun">=</span><span class="pln"> http</span><span class="pun">.</span><span class="pln">request</span><span class="pun">(</span><span class="str">"http://127.0.0.1:1688/cmd?fun=renamecurrentrecord&amp;name="</span><span class="pun">..</span><span class="pln">name</span><span class="pun">);</span></code></li><li class="L4"><code class="language-lua"><span class="pln">    </span><span class="kwd">if</span><span class="pln"> code </span><span class="pun">==</span><span class="pln"> </span><span class="lit">200</span><span class="pln"> </span><span class="kwd">then</span></code></li><li class="L5"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> resJson </span><span class="pun">=</span><span class="pln"> sz</span><span class="pun">.</span><span class="pln">json</span><span class="pun">.</span><span class="pln">decode</span><span class="pun">(</span><span class="pln">res</span><span class="pun">);</span></code></li><li class="L6"><code class="language-lua"><span class="pln">        </span><span class="kwd">local</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> resJson</span><span class="pun">.</span><span class="pln">result</span><span class="pun">;</span></code></li><li class="L7"><code class="language-lua"><span class="pln">        dialog</span><span class="pun">(</span><span class="str">"the result is: "</span><span class="pln"> </span><span class="pun">..</span><span class="pln"> result</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">);</span></code></li><li class="L8"><code class="language-lua"><span class="pln">    </span><span class="kwd">end</span><span class="pln"> </span></code></li><li class="L9"><code class="language-lua"><span class="kwd">end</span><span class="pun">;</span></code></li><li class="L0"><code class="language-lua"><span class="pln">runApp</span><span class="pun">(</span><span class="str">"app"</span><span class="pun">);</span></code></li><li class="L1"><code class="language-lua"><span class="pln">mSleep</span><span class="pun">(</span><span class="lit">1</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">);</span></code></li><li class="L2"><code class="language-lua"><span class="pln">renameCurrentRecord</span><span class="pun">(</span><span class="str">"139xxxxxxx吴有财"</span><span class="pun">);</span></code></li></ol></pre>
+ -->
+
+</body></html>

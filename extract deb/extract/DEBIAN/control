@@ -1,0 +1,11 @@
+Package: com.xlsn0w.JailbreakChecker
+Section: Utilities
+Installed-Size: 11540
+Maintainer: XLsn0w
+Architecture: iphoneos-arm
+Version: 2.0.0
+Depends: mobilesubstrate, findutils, zip, unzip, gawk, cy+cpu.arm64, firmware (>= 12.3), essential
+Description: 屏蔽越狱检测,一键新机
+Name: JailbreakChecker
+Author: XLsn0w
+Icon: file:///Applications/clearmaster.app/icon-29@2x.png

@@ -1,0 +1,176 @@
+
+table
+{
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 100%;
+    table-layout:fixed;
+}
+
+table td, table th
+{
+    border: 1px solid #cad9ea;
+    color: #666;
+    height: 30px;
+    padding: 8px;
+    word-wrap:break-word;
+}
+
+table thead th
+{
+    background-color: #CCE8EB;
+    width: 100px;
+    padding: 8px;
+}
+
+table tr:nth-child(odd)
+{
+    background: #fff;
+}
+table tr:nth-child(even)
+{
+    background: #F5FAFA;
+}
+
+
+.page-header {
+	padding-bottom: 9px;
+	margin: 20px 0 30px;
+	border-bottom: 1px solid #eee
+}
+
+ul,ol {
+	padding: 0;
+	margin: 0 0 10px 25px
+}
+
+ul ul,ul ol,ol ol,ol ul {
+	margin-bottom: 0
+}
+
+li {
+	line-height: 20px
+}
+
+ul.unstyled,ol.unstyled {
+	margin-left: 0;
+	list-style: none
+}
+
+ul.inline,ol.inline {
+	margin-left: 0;
+	list-style: none
+}
+
+ul.inline>li,ol.inline>li {
+	display: inline-block;
+	padding-right: 5px;
+	padding-left: 5px
+}
+
+dl {
+	margin-bottom: 20px
+}
+
+dt,dd {
+	line-height: 20px
+}
+
+dt {
+	font-weight: 700
+}
+
+dd {
+	margin-left: 10px
+}
+
+pre {
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 20px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0,0,0,.15);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px
+}
+
+pre.prettyprint {
+	margin-bottom: 20px
+}
+
+pre code {
+	padding: 0;
+	color: inherit;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: transparent;
+	border: 0
+}
+
+hr {
+	margin: 20px 0;
+	border: 0;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #fff
+}
+
+code,pre {
+	padding: 0 3px 2px;
+	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+	font-size: 12px;
+	color: #333;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px
+}
+
+code {
+	padding: 2px 4px;
+	color: #d14;
+	white-space: nowrap;
+	background-color: #f7f7f9;
+	border: 1px solid #e1e1e8
+}
+
+h1{margin:50px 0 20px;font-size:30px}
+h2{margin:35px 0 20px;font-size:26px}
+h3{margin:20px 0;font-size:21px}
+h4{font-size:18px}
+h5,h6{font-size:16px}
+
+
+#wmd-preview {
+    font-family: PingFang SC,Hiragino Sans GB,Helvetica Neue,Microsoft Yahei,WenQuanYi Micro Hei,sans-serif;
+}
+a {
+    color: #08c;
+    text-decoration: none;
+}
+
+.toc ul {
+    list-style-type: none;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
